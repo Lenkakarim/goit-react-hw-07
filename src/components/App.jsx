@@ -20,6 +20,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+
   return (
     <div>
       <h1>Phonebook</h1>
@@ -27,11 +28,9 @@ function App() {
       <SearchBox />
       {loading && !error && <Loader />}
       <ContactList />
-      <Toast
-        message={
-          error?.message || "Oops! Failed to load contacts."
-        }
-      />
+      {error && (
+        <Toast message={"Oops! Failed to load contacts."} />
+      )}
       <ToastContainer
         position="top-right"
         autoClose={3000}
