@@ -1,4 +1,4 @@
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/contactsOps";
 import s from "./ContactForm.module.css";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { nanoid } from "nanoid";
@@ -19,6 +19,8 @@ const contactSchema = Yup.object().shape({
 const initialValues = {
   name: "",
   number: "",
+  loading: false,
+  error: null,
 };
 
 const ContactForm = () => {
